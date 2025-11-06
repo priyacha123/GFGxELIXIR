@@ -1,113 +1,153 @@
-import { Sparkles, Trophy, Users, Zap } from "lucide-react";
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Separator } from "../ui/separator";
+import { Sparkles, Trophy, Users, Zap } from "lucide-react";
 
-// Mission Briefing Section
+gsap.registerPlugin(ScrollTrigger);
 
 const About = () => {
+  const sectionRef = useRef(null);
+  const videoRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const sectionEl = sectionRef.current;
+    const videoEl = videoRef.current;
+    const contentEl = contentRef.current;
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionEl,
+        start: "top top",
+        end: "bottom+=100% top",
+        scrub: 1.5,
+        pin: true,
+      },
+    });
+
+    // Video zoom + blur animation (same as Hero)
+    tl.fromTo(
+      videoEl,
+      { scale: 1, opacity: 1, filter: "blur(0px)" },
+      {
+        scale: 1.25,
+        opacity: 0.4,
+        filter: "blur(4px)",
+        ease: "power3.inOut",
+      },
+      0
+    );
+
+    // Right content fade + slide
+    tl.fromTo(
+      contentEl,
+      { opacity: 1, x: 0 },
+      { opacity: 0, x: 100, ease: "power2.inOut" },
+      0
+    );
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+    };
+  }, []);
+
   return (
-    <section className="py-20 bg-black">
-      <div className="container mx-auto px-4">
-        <Card
-          className="border bg-black border-white/10 shadow-2xl backdrop-blur-sm"
-          data-gsap="fade-up"
-          data-gsap-duration="1000"
-        >
-          <CardHeader>
-            <CardTitle className="text-4xl text-center mb-4 flex items-center justify-center gap-3">
-              <span className="text-3xl md:text-5xl font-normal text-white">
-                Mission Briefing
-              </span>
-            </CardTitle>
-            <Separator className="bg-white/20" />
-          </CardHeader>
-          <CardContent className="space-y-6 text-gray-300">
-            <p className="text-base md:text-lg leading-relaxed">
-              <span className="text-white font-semibold">
-                CLASSIFIED: SCOUT REGIMENT HEADQUARTERS
-              </span>
-              <br />
-              <br />
-              Behind the walls of technological limitation, a new threat
-              emerges. The{" "}
-              <span className="text-white font-semibold">
-                GeeksforGeeks X Elixir Scout Regiment
-              </span>{" "}
-              assembles for an unprecedented 72-hour operation to reclaim
-              humanity&apos;s digital freedom.
-            </p>
-            <p className="text-base md:text-lg leading-relaxed">
-              This is not merely a competition. This is{" "}
-              <span className="text-white font-semibold">
-                humanity&apos;s last stand
-              </span>{" "}
-              against the titans of obsolete code, rigid systems, and creative
-              limitations. Elite developers will unite, innovate, and
-              demonstrate that
-              <span className="text-white font-semibold">
-                {" "}
-                determination breaks through any wall.
-              </span>
-            </p>
-            <div className="grid md:grid-cols-2 gap-6 mt-8">
+    <section
+      ref={sectionRef}
+      className="relative h-screen w-full overflow-hidden  text-white flex items-center justify-end"
+    >
+      {/* Background Video */}
+      <video
+        ref={videoRef}
+        src="https://res.cloudinary.com/djrs8vc5s/video/upload/f_auto,q_auto:good/v1730902345/1106_1_-1_lnv3bn.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        className="absolute inset-0 w-full h-full object-cover"
+        style={{ pointerEvents: "none" }}
+      />
+
+      {/* Overlay */}
+      <div className="absolute inset-0 bg-black/50" />
+
+      {/* Content (on top of video, aligned right) */}
+      <div
+        ref={contentRef}
+        className="relative z-10 max-w-xl p-6 md:p-10 mr-10 md:mr-20 shadow-2xl rounded-2xl"
+      >
+        <CardHeader>
+          <CardTitle className="text-4xl md:text-5xl mb-4 font-light tracking-wider">
+            Mission Briefing
+          </CardTitle>
+          <Separator className="bg-white/20 mb-4" />
+        </CardHeader>
+
+        <CardContent className="space-y-6 text-gray-300">
+          <p className="text-base md:text-lg leading-relaxed">
+            <span className="text-white font-semibold">
+              CLASSIFIED: SCOUT REGIMENT HEADQUARTERS
+            </span>
+            <br />
+            <br />
+            The{" "}
+            <span className="text-white font-semibold">
+              GeeksforGeeks X Elixir Scout Regiment
+            </span>{" "}
+            commences its mission to reclaim humanity’s digital realm — a
+            72-hour operation to push past the limits of innovation.
+          </p>
+
+          <p className="text-base md:text-lg leading-relaxed">
+            This is{" "}
+            <span className="text-white font-semibold">
+              humanity’s last stand
+            </span>{" "}
+            against the titans of outdated code and creative stagnation.
+            Developers unite, adapt, and rise beyond all boundaries.
+          </p>
+
+          <div className="grid grid-cols-2 gap-4 text-left">
+            {[
+              {
+                icon: <Users className="w-6 h-6 text-white" />,
+                title: "Collaboration",
+                text: "Team up with elite developers.",
+              },
+              {
+                icon: <Zap className="w-6 h-6 text-white" />,
+                title: "Innovation",
+                text: "Build creative solutions.",
+              },
+              {
+                icon: <Trophy className="w-6 h-6 text-white" />,
+                title: "Recognition",
+                text: "Win prizes and mentorship.",
+              },
+              {
+                icon: <Sparkles className="w-6 h-6 text-white" />,
+                title: "Growth",
+                text: "Learn from experts.",
+              },
+            ].map((item, idx) => (
               <div
-                className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-gsap="fade-right"
+                key={idx}
+                className="flex items-start gap-3 bg-white/5 p-3 rounded-md border border-white/10 hover:bg-white/10 transition-all duration-300"
               >
-                <Users className="w-8 h-8 text-white mt-1" />
+                {item.icon}
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Collaboration
+                  <h3 className="font-semibold text-white text-lg">
+                    {item.title}
                   </h3>
-                  <p className="text-gray-400">
-                    Team up with elite developers and designers
-                  </p>
+                  <p className="text-gray-400 text-sm">{item.text}</p>
                 </div>
               </div>
-              <div
-                className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-gsap="fade-left"
-              >
-                <Zap className="w-8 h-8 text-white mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Innovation
-                  </h3>
-                  <p className="text-gray-400">Build cutting-edge solutions</p>
-                </div>
-              </div>
-              <div
-                className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-gsap="fade-right"
-                data-gsap-delay="200"
-              >
-                <Trophy className="w-8 h-8 text-white mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Recognition
-                  </h3>
-                  <p className="text-gray-400">
-                    Win amazing prizes and mentorship
-                  </p>
-                </div>
-              </div>
-              <div
-                className="flex items-start gap-4 p-4 rounded-lg bg-white/5 border border-white/10 hover:bg-white/10 hover:scale-105 transform transition-all duration-300"
-                data-gsap="fade-left"
-                data-gsap-delay="200"
-              >
-                <Sparkles className="w-8 h-8 text-white mt-1" />
-                <div>
-                  <h3 className="text-xl font-semibold mb-2 text-white">
-                    Growth
-                  </h3>
-                  <p className="text-gray-400">Learn from industry experts</p>
-                </div>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+            ))}
+          </div>
+        </CardContent>
       </div>
     </section>
   );
