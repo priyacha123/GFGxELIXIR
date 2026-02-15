@@ -22,7 +22,7 @@ const Hero = () => {
   const contentRef = useRef(null);
 
   // devfolio button
-  React.useEffect(() => {
+  useEffect(() => {
     const script = document.createElement('script');
     script.src = 'https://apply.devfolio.co/v2/sdk.js';
     script.async = true;
@@ -61,7 +61,7 @@ const Hero = () => {
           {/* The Image is now absolute, so its "transparent border" won't push anything */}
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none translate-x-5 translate-y-11">
             <Image 
-              src="/stellaris logo.webp" 
+              src="/stellaris-logo.webp" 
               alt="Stellaris Logo" 
               width={1200}
               height={400}
@@ -106,10 +106,9 @@ const Hero = () => {
           
           {/* devfolio button */}
           <div
-            class="apply-button"
+            className="apply-button h-11 w-[312px]"
             data-hackathon-slug="stellaris"
-            data-button-theme="dark"
-            style="height: 44px; width: 312px"
+            data-button-theme="dark-inverted"
           ></div>
 
         </div>

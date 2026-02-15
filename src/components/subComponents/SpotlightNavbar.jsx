@@ -6,19 +6,9 @@ import { cn } from "@/lib/utils";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { navItems } from "@/lib/data/data";
 
 export function SpotlightNavbar({
-  items = [
-    { label: "Home", href: "#hero" },
-
-    { label: "Mission", href: "#mission-briefing" },
-    { label: "Tracks", href: "#tracks" },
-    { label: "Timelines", href: "#timeline" },
-    { label: "Sponsors", href: "#sponsors" },
-    { label: "Rewards", href: "#prizes" },
-    { label: "FAQ", href: "#faq" },
-    { label: "Register Now", href: "#contact" },
-  ],
   className,
   onItemClick,
   defaultActiveIndex = 0,
@@ -29,7 +19,7 @@ export function SpotlightNavbar({
   const ambienceX = useRef(0);
 
   // devfolio button
-  React.useEffect(() => {
+  useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://apply.devfolio.co/v2/sdk.js";
     script.async = true;
@@ -87,23 +77,23 @@ export function SpotlightNavbar({
           "relative h-16 rounded-full transition-all duration-300 overflow-hidden bg-black/10 backdrop-blur-xs border border-white/10 shadow-2xl w-full max-w-7xl mx-auto",
         )}
       >
-        <div className="relative flex items-center justify-between h-full px-6 sm:px-10 z-[10]">
+        <div className="relative flex items-center justify-between h-full px-6 sm:px-10 z-10">
           <button
             onClick={() => handleItemClick({ href: "#hero", label: "Home" }, 0)}
             className="focus:outline-none"
           >
             <Image
-              src="/Steller A.webp"
+              src="/stellaris-logo.webp"
               alt="Stellaris Logo"
               width={150}
               height={40}
-              className="h-8 sm:h-16 w-auto object-contain cursor-pointer"
+              className="rotate-90 scale-[4.0] md:scale-[3.0] ml-20 h-8 sm:h-16 w-auto object-contain cursor-pointer"
               priority
             />
           </button>
 
           <ul className="hidden lg:flex items-center gap-1 sm:gap-2">
-            {items.map((item, idx) => {
+            {navItems.map((item, idx) => {
               const isRegister = item.label === "Register Now";
               return (
                 <li
@@ -146,10 +136,11 @@ export function SpotlightNavbar({
             }}
           />
 
-          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-white/10 rounded-b-[2rem] z-0" />
+          <div className="absolute bottom-0 left-0 w-full h-px bg-white/10 rounded-b-[2rem] z-0" />
         </div>
       </nav>
 
+      {/* mobile view */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -160,7 +151,7 @@ export function SpotlightNavbar({
             className="lg:hidden absolute top-20 left-4 right-4 bg-black/90 backdrop-blur-2xl border border-white/10 rounded-3xl p-6 shadow-2xl z-40 overflow-hidden"
           >
             <ul className="flex flex-col gap-2">
-              {items.map((item, idx) => {
+              {navItems.map((item, idx) => {
                 const isRegister = item.label === "Register Now";
                 return (
                   <motion.li
@@ -169,31 +160,31 @@ export function SpotlightNavbar({
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
                   >
-                    {/* <button
+                    <button
                       onClick={() => handleItemClick(item, idx)}
                       className={cn(
-                        "w-full text-left px-4 py-3 text-lg font-medium rounded-xl transition-all",
+                        "w-full text-center px-4 py-3 text-lg font-medium rounded-xl transition-all",
                         isRegister
                           ? "bg-white text-black font-bold text-center mt-4 shadow-[0_0_20px_rgba(255,255,255,0.2)]"
                           : activeIndex === idx
                             ? "bg-white/10 text-white"
-                            : "text-neutral-400 hover:text-white hover:bg-white/5"
+                            : "text-neutral-400 hover:text-white hover:bg-white/5",
                       )}
                     >
                       {item.label}
-                    </button> */}
-
-                    {/* devfolio button */}
-                    <div
-                      class="apply-button"
-                      data-hackathon-slug="stellaris"
-                      data-button-theme="dark"
-                      style="height: 44px; width: 312px"
-                    ></div>
+                    </button>
                   </motion.li>
                 );
               })}
             </ul>
+
+            {/* devfolio button */}
+            <div
+              className="apply-button h-11 w-[312px]"
+              data-hackathon-slug="stellaris"
+              data-button-theme="dark-inverted"
+            ></div>
+
           </motion.div>
         )}
       </AnimatePresence>

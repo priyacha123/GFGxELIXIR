@@ -15,7 +15,7 @@ const CTA = () => {
   const contentRef = useRef(null);
 
   // devfolio button
-  React.useEffect(() => {
+  useEffect(() => {
     const script = document.createElement("script");
     script.src = "https://apply.devfolio.co/v2/sdk.js";
     script.async = true;
@@ -110,10 +110,9 @@ const CTA = () => {
 
           {/* devfolio button */}
           <div
-            class="apply-button"
+            className="apply-button h-11 w-[312px]"
             data-hackathon-slug="stellaris"
-            data-button-theme="dark"
-            style="height: 44px; width: 312px"
+            data-button-theme="dark-inverted"
           ></div>
 
           <a href="https://discord.gg/yTxvuuktdZ" target="blank">
