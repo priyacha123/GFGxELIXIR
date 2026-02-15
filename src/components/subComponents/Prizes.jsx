@@ -104,7 +104,7 @@ const Prizes = () => {
   const winners = [
     {
       place: "1st Place",
-      amount: "500 $",
+      amount: "$500",
       icon: Trophy,
       color: "text-yellow-100",
       spotlight: "rgba(253, 224, 71, 0.2)",
@@ -115,7 +115,7 @@ const Prizes = () => {
     },
     {
       place: "2nd Place",
-      amount: "300 $",
+      amount: "$300",
       icon: Crown,
       color: "text-slate-200",
       spotlight: "rgba(226, 232, 240, 0.2)",
@@ -126,7 +126,7 @@ const Prizes = () => {
     },
     {
       place: "3rd Place",
-      amount: "200 $",
+      amount: "$200",
       icon: Award,
       color: "text-orange-100",
       spotlight: "rgba(253, 186, 116, 0.2)",
@@ -241,7 +241,7 @@ const Prizes = () => {
                 {/* Right Side: Price & Badge */}
                 <div className="w-full md:w-auto mt-2 md:mt-0 flex flex-row md:flex-col items-center md:items-end justify-between md:justify-center border-t md:border-t-0 border-white/5 pt-4 md:pt-0">
                   <p className="text-2xl md:text-3xl font-bold text-white group-hover:text-blue-300 transition-colors tracking-tight drop-shadow-md">
-                    100 $
+                    $100
                   </p>
 
                   <div className="md:mt-1.5 inline-flex items-center px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 group-hover:border-blue-500/20 group-hover:bg-blue-500/10 transition-all duration-300">
