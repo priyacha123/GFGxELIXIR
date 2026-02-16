@@ -17,7 +17,6 @@ const InteractiveCard = ({
   const rotateX = useTransform(mouseY, [-0.5, 0.5], ["7deg", "-7deg"]);
   const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-7deg", "7deg"]);
 
-  const [spotlightPos, setSpotlightPos] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e) => {
@@ -31,8 +30,6 @@ const InteractiveCard = ({
 
     x.set(mouseXRel / width);
     y.set(mouseYRel / height);
-
-    setSpotlightPos({ x: e.clientX - rect.left, y: e.clientY - rect.top });
   };
 
   const handleMouseLeave = () => {
@@ -52,22 +49,8 @@ const InteractiveCard = ({
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className={`relative h-full w-full rounded-xl border border-white/10 bg-white/5 backdrop-blur-xl transition-colors duration-300 overflow-hidden ${className}`}
+      className={`relative h-full w-full rounded-xl border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.02] backdrop-blur-xl transition-all duration-700 ease-out group-hover:border-white/25 group-hover:shadow-[0_0_80px_-20px_rgba(255,255,255,0.15)] group-hover:from-white/[0.12] group-hover:to-white/[0.04] overflow-hidden ${className}`}
     >
-      <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300"
-        style={{
-          opacity: isHovered ? 1 : 0,
-          background: `radial-gradient(600px circle at ${spotlightPos.x}px ${spotlightPos.y}px, ${spotlightColor}, transparent 40%)`,
-          transform: "translateZ(0px)",
-        }}
-      />
-
-      <div
-        className={`absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent skew-x-12 transition-transform duration-1000 ease-in-out pointer-events-none ${isHovered ? "translate-x-full" : "-translate-x-full"}`}
-        style={{ transform: "translateZ(1px)" }}
-      />
-
       <div
         className="relative z-10 h-full flex flex-col items-center justify-start pt-8 pb-4"
         style={{ transform: "translateZ(30px)" }}
@@ -177,7 +160,7 @@ const Prizes = () => {
             >
               <InteractiveCard
                 spotlightColor={p.spotlight}
-                className={`group ${p.border} bg-white/5 backdrop-blur-xl shadow-2xl`}
+                className={`group ${p.border} shadow-2xl`}
               >
                 <FloatingIcon icon={p.icon} color={p.color} />
 
@@ -214,7 +197,7 @@ const Prizes = () => {
             whileHover={{ scale: 1.02 }}
           >
             <InteractiveCard
-              className="group border border-white/10 bg-white/5 backdrop-blur-xl hover:border-blue-500/30 transition-all duration-500"
+              className="group border border-white/10 hover:border-blue-500/30 transition-all duration-500"
               spotlightColor="rgba(59, 130, 246, 0.2)"
             >
               <div className="relative h-full p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8 z-10">
@@ -228,7 +211,7 @@ const Prizes = () => {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg md:text-xl font-bold text-white leading-tight group-hover:text-blue-100 transition-colors">
+                      <h3 className="text-lg md:text-xl font-semibold text-white leading-tight group-hover:text-blue-100 transition-colors">
                         Track Winners
                       </h3>
                       <p className="text-gray-500 text-xs md:text-sm mt-1 font-medium tracking-wide">
@@ -260,7 +243,7 @@ const Prizes = () => {
             whileHover={{ scale: 1.02 }}
           >
             <InteractiveCard
-              className="group border border-white/10 bg-white/5 backdrop-blur-xl hover:border-purple-500/30 transition-all duration-500"
+              className="group border border-white/10 bg-white/1 hover:border-purple-500/30 transition-all duration-500"
               spotlightColor="rgba(168, 85, 247, 0.2)"
             >
               <div className="relative h-full p-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-8 z-10">
@@ -274,7 +257,7 @@ const Prizes = () => {
                       />
                     </div>
                     <div>
-                      <h3 className="text-lg md:text-xl font-bold text-white leading-tight group-hover:text-purple-100 transition-colors">
+                      <h3 className="text-lg md:text-xl font-semibold text-white leading-tight group-hover:text-purple-100 transition-colors">
                         Special Awards
                       </h3>
                       <p className="text-gray-500 text-xs md:text-sm mt-1 font-medium tracking-wide">
