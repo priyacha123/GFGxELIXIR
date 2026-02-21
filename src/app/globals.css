@@ -147,3 +147,15 @@
 .animate-astro-float {
   animation: astro-float 6s ease-in-out infinite;
 }
+
+/* Devfolio button styles */
+.apply-button {
+  position: relative !important;
+  z-index: 50 !important;
+}
+
+.apply-button iframe {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}

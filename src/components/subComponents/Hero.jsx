@@ -99,9 +99,10 @@ const Hero = () => {
 
           {/* devfolio button */}
           <div
-            className="apply-button h-11 w-[312px]"
+            className="apply-button h-11 w-[312px] relative z-50"
             data-hackathon-slug="stellaris"
             data-button-theme="light"
+            style={{ minHeight: "44px", minWidth: "320px" }}
           ></div>
         </div>
 
