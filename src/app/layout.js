@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GSAPProvider from "@/components/gsap-provider";
 import BackgroundVideo from "@/components/BackgroundVideo";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,11 @@ export default function RootLayout({ children }) {
       >
         <BackgroundVideo />
         <GSAPProvider>{children}</GSAPProvider>
-      <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script>
+        <Script
+  src="https://apply.devfolio.co/v2/sdk.js"
+  strategy="afterInteractive"
+/>
+      {/* <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script> */}
       </body>
     </html>
   );

@@ -41,8 +41,8 @@ export default function Footer() {
               <p className="text-gray-400 text-base md:text-sm lg:text-lg">
                 March 28 - 29, 2026
               </p>
-              <p className="text-gray-400 text-base md:text-sm lg:text-lg font-semibold">
-                36 Hours of Innovation
+              <p className="text-gray-400 text-base md:text-lg font-semibold">
+                24 Hours of Innovation
               </p>
             </div>
 
