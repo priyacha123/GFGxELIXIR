@@ -97,7 +97,7 @@ const CTA = () => {
             className="apply-button h-11 w-[312px]"
             data-hackathon-slug="stellaris"
             data-button-theme="light"
-          ></div>
+          ></div> 
 
           {/* <div
             class="apply-button"

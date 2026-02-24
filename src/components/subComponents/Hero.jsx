@@ -60,7 +60,7 @@ const Hero = () => {
               height={400}
               // scale-[2.5] or higher will make the visible logo huge
               // while the container stays small
-              className="rotate-90 scale-[2.5] sm:scale-[3.5] md:scale-[4.5] lg:scale-[5.5] w-auto h-full object-contain"
+              className="rotate-90 transform-gpu scale-[2.5] sm:scale-[3.5] md:scale-[4.5] lg:scale-[5.5] w-auto h-full object-contain"
               priority
             />
           </div>
