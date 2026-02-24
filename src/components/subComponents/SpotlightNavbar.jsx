@@ -20,11 +20,11 @@ export function SpotlightNavbar({
   const observerRef = useRef(null);
 
   // Initialize Devfolio buttons
-  useDevfolio();
+  // useDevfolio();
 
-  useEffect(() => {
-  if (isOpen && window.devfolio) {
-    window.devfolio.reload();
+useEffect(() => {
+  if (isOpen && window.devfolio?.initialize) {
+    window.devfolio.initialize();
   }
 }, [isOpen]);
 
