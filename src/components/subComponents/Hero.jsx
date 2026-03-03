@@ -27,7 +27,7 @@ const Hero = () => {
 
   useEffect(() => {
     // Skip pinned animation entirely on mobile for smooth scrolling
-    const isMobile = window.innerWidth < 768;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
     if (isMobile) return;
 
     let ctx = gsap.context(() => {
@@ -99,7 +99,7 @@ const Hero = () => {
               variant="outline"
               className="border-2 border-white text-white hover:bg-white px-6 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-semibold tracking-wide"
               onClick={() =>
-                window.open("https://registration.example.com", "_blank")
+                typeof window !== 'undefined' && window.open("https://registration.example.com", "_blank")
               }
             >
               <Target className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />

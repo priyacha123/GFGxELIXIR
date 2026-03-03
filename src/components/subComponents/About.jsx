@@ -32,13 +32,15 @@ const About = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(typeof window !== "undefined" && window.innerWidth < 768);
     };
 
     checkMobile();
-    window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener("resize", checkMobile);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }
   }, []);
 
   useEffect(() => {
@@ -120,12 +122,14 @@ const About = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      ctx.revert();
-      window.removeEventListener("scroll", handleScroll);
-    };
+      return () => {
+        ctx.revert();
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [isMobile, x, y]);
 
   return (
