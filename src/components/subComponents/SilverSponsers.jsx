@@ -131,12 +131,12 @@ const SilverSponsors = () => {
                     </p>
                 </div>
 
-                <div className="flex flex-row justify-center items-center gap-6 md:gap-10 py-8">
+                <div className="flex flex-col sm:flex-row flex-wrap justify-center items-center gap-8 md:gap-10 py-8 px-4">
                     {SilverSponsorsData.map((sponsor, index) => (
                         <div
                             key={index}
                             ref={el => cardsRef.current[index] = el}
-                            className="group relative w-xs md:w-sm aspect-square bg-[#12161d]/50 border-2 border-slate-500/30 shadow-2xl transition-all duration-700"
+                            className="group relative w-[280px] sm:w-[300px] md:w-[320px] aspect-square bg-[#12161d]/50 border-2 border-slate-500/30 shadow-2xl transition-all duration-700"
                             style={{
                                 borderImage: "linear-gradient(to bottom right, #94a3b8 0%, #475569 50%, #94a3b8 100%) 1"
                             }}

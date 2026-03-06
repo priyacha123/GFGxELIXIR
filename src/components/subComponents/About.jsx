@@ -258,8 +258,8 @@ const About = () => {
                 adapt, and rise beyond all horizons.
               </p>
               <p className="font-semibold bg-linear-to-r from-white via-white to-white bg-clip-text text-transparent">
-                Venue - Abes Engineering College, Ghaziabad
-              </p>
+  Venue - Abes Engineering College, Ghaziabad
+</p>
 
               <div
                 className={`grid ${isMobile ? "grid-cols-1" : "grid-cols-2"
