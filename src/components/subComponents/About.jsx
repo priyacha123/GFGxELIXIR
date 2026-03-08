@@ -6,6 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Separator } from "../ui/separator";
 import { aboutData } from "@/lib/data/data";
+import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -32,13 +33,15 @@ const About = () => {
 
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
+      setIsMobile(typeof window !== "undefined" && window.innerWidth < 768);
     };
 
     checkMobile();
-    window.addEventListener("resize", checkMobile);
 
-    return () => window.removeEventListener("resize", checkMobile);
+    if (typeof window !== "undefined") {
+      window.addEventListener("resize", checkMobile);
+      return () => window.removeEventListener("resize", checkMobile);
+    }
   }, []);
 
   useEffect(() => {
@@ -120,12 +123,14 @@ const About = () => {
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    if (typeof window !== "undefined") {
+      window.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => {
-      ctx.revert();
-      window.removeEventListener("scroll", handleScroll);
-    };
+      return () => {
+        ctx.revert();
+        window.removeEventListener("scroll", handleScroll);
+      };
+    }
   }, [isMobile, x, y]);
 
   return (
@@ -196,14 +201,16 @@ const About = () => {
                 }
           }
         >
-          <img
+          <Image
             src="/astro.2.webp"
             alt="Astronaut"
             className={`w-full object-contain pointer-events-none ${
               isMobile
-                ? "max-w-[280px] animate-astro-float-mobile"
-                : "max-w-[650px] drop-shadow-[0_0_15px_rgba(0,128,255,0.3)] animate-astro-float brightness-85"
+                ? "max-w-70 animate-astro-float-mobile"
+                : "max-w-162.5 drop-shadow-[0_0_15px_rgba(0,128,255,0.3)] animate-astro-float brightness-85"
             }`}
+            height={500}
+            width={500}
           />
         </motion.div>
 
@@ -217,7 +224,7 @@ const About = () => {
                 } mb-4 tracking-[0.08em] uppercase font-bold text-white`}
               >
                 Mission{" "}
-                <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
+                <span className="bg-linear-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
                   Briefing
                 </span>
               </CardTitle>
@@ -230,13 +237,13 @@ const About = () => {
                   isMobile ? "text-sm" : "text-base md:text-lg"
                 } leading-relaxed`}
               >
-                <span className="font-semibold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
+                <span className="font-semibold bg-linear-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
                   CLASSIFIED: Stellar Corps
                 </span>
                 <br />
                 <br />
                 The{" "}
-                <span className="font-semibold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
+                <span className="font-semibold bg-linear-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
                   GeeksforGeeks X Elixir Space Station
                 </span>{" "}
                 commences it&apos;s mission to find mankind&apos;s new frontier-
@@ -247,11 +254,16 @@ const About = () => {
                 className={`${aboutBodyFont.className} text-sm md:text-base leading-relaxed`}
               >
                 This is{" "}
-                <span className="font-semibold bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
+                <span className="font-semibold bg-linear-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">
                   humanity&apos;s last stand
                 </span>{" "}
                 against the gravity of code and creative void. Developers unite,
                 adapt, and rise beyond all horizons.
+              </p>
+              
+              {/* Venue */}
+              <p className="font-bold bg-linear-to-r from-white via-white to-white bg-clip-text text-transparent">
+                <span className="font-bold bg-linear-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent">Venue</span> - Abes Engineering College, Ghaziabad
               </p>
 
               <div
@@ -264,7 +276,7 @@ const About = () => {
                     key={idx}
                     className="flex items-center gap-3 bg-white/5 p-3 rounded-md border border-white/10 hover:bg-white/10 transition-all duration-300 overflow-hidden"
                   >
-                    <div className="flex-shrink-0">{item.icon}</div>
+                    <div className="shrink-0">{item.icon}</div>
                     <div className="min-w-0">
                       <h3
                         className={`font-semibold text-white ${

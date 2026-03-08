@@ -1,9 +1,9 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import GSAPProvider from "@/components/gsap-provider";
-import BackgroundVideo from "@/components/BackgroundVideo";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/react";
+import StarFieldWrapper from "@/components/StarFieldWrapper";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,9 +16,12 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "GfG × Elixir Hackathon 2025",
+  title: "Stellaris 2026",
   description:
-  "Join 1000+ developers, designers, and innovators for an epic 48-hour hackathon. Build cutting-edge projects and compete for amazing prizes.",
+    "Join 1000+ developers, designers, and innovators for an epic 48-hour hackathon. Build cutting-edge projects and compete for amazing prizes.",
+  icons: {
+    icon: '/icon.webp',
+  },
 };
 
 export default function RootLayout({ children }) {
@@ -28,14 +31,13 @@ export default function RootLayout({ children }) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}
       >
         <Analytics />
-        {/* <BackgroundVideo /> */}
+
+        <StarFieldWrapper />
         <GSAPProvider>{children}</GSAPProvider>
         <Script
           src="https://apply.devfolio.co/v2/sdk.js"
           strategy="afterInteractive"
         />
-        
-        {/* <script defer async src="https://apply.devfolio.co/v2/sdk.js"></script> */}
       </body>
     </html>
   );

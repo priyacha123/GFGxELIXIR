@@ -9,6 +9,7 @@ import { animatePinnedSection } from "@/lib/gsap-utils";
 import CountdownTimer from "./CountdownTimer";
 import Image from "next/image";
 import { useDevfolio } from "@/hooks/useDevfolio";
+import { Venue } from "./Venue";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -27,7 +28,7 @@ const Hero = () => {
 
   useEffect(() => {
     // Skip pinned animation entirely on mobile for smooth scrolling
-    const isMobile = window.innerWidth < 768;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
     if (isMobile) return;
 
     let ctx = gsap.context(() => {
@@ -44,19 +45,19 @@ const Hero = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-[90vh] w-full overflow-hidden text-white"
+      className="relative min-h-screen w-full overflow-hidden text-white"
     >
       <div
         ref={contentRef}
-        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 space-y-4 pt-16 sm:pt-20"
+        className="absolute inset-0 flex flex-col items-center justify-center text-center z-10 px-4 gap-1 pt-8 sm:pt-10"
       >
-        <Badge className="px-3 py-1.5 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg translate-y-4 sm:translate-y-2">
+        <Badge className="px-3 py-1.5 text-xs sm:text-sm bg-white/10 backdrop-blur-sm border-white/20 text-white shadow-lg">
           COMMAND BRANCH: GEEKSFORGEEKS X ELIXIR
         </Badge>
 
-        <div className="relative flex items-center justify-center w-full h-20 sm:h-30 md:h-40 lg:h-52">
+        <div className="relative flex items-center justify-center w-full h-8 sm:h-12 md:h-20 lg:h-28">
           {/* The Image is now absolute, so its "transparent border" won't push anything */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none translate-x-2 translate-y-6 sm:translate-x-5 sm:translate-y-11">
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none translate-x-2 sm:translate-x-5">
             <Image
               src="/stellaris-logo.webp"
               alt="Stellaris Logo"
@@ -99,7 +100,7 @@ const Hero = () => {
               variant="outline"
               className="border-2 border-white text-white hover:bg-white px-6 sm:px-10 py-5 sm:py-6 text-base sm:text-lg font-semibold tracking-wide"
               onClick={() =>
-                window.open("https://registration.example.com", "_blank")
+                typeof window !== 'undefined' && window.open("https://registration.example.com", "_blank")
               }
             >
               <Target className="mr-2 w-4 h-4 sm:w-5 sm:h-5" />
@@ -112,12 +113,16 @@ const Hero = () => {
             className="apply-button h-25 w-[312px] relative z-50"
             data-hackathon-slug="stellaris"
             data-button-theme="light"
-            // style={{ minHeight: "44px", minWidth: "320px" }}
+          // style={{ minHeight: "44px", minWidth: "320px" }}
           ></div>
         </div>
 
         <div className="w-full max-w-4xl mt-6">
           <CountdownTimer targetDate="2026-03-28T11:00:00" />
+        </div>
+
+        <div>
+          <Venue />
         </div>
       </div>
     </section>

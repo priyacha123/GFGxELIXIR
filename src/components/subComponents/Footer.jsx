@@ -36,7 +36,7 @@ export default function Footer() {
 
             {/* Event Info */}
             <div className="space-y-2">
-              <h2 className="text-white font-semibold tracking-wider hover:text-blue-500 transition-all duration-200 hover:translate-y-[-2px] cursor-pointer text-lg md:text-base lg:text-xl">
+              <h2 className="text-blue-500 font-semibold tracking-wider transition-all duration-200   text-lg md:text-base lg:text-xl">
                 EVENT INFO
               </h2>
               <p className="text-gray-400 text-base md:text-sm lg:text-lg">
@@ -45,11 +45,14 @@ export default function Footer() {
               <p className="text-gray-400 text-base md:text-lg font-semibold">
                 24 Hours of Innovation
               </p>
+              <p className="text-gray-400 text-base md:text-lg font-semibold">
+                Venue: ABES Engineering College, Ghaziabad
+              </p>
             </div>
 
             {/* Quicklinks */}
             <div className="space-y-2">
-              <h2 className="text-white font-semibold tracking-wider hover:text-blue-500 transition-all duration-200 hover:translate-y-[-2px] cursor-pointer text-lg md:text-base lg:text-xl">
+              <h2 className="text-blue-500 font-semibold tracking-wider  transition-all duration-200   text-lg md:text-base lg:text-xl">
                 QUICKLINKS
               </h2>
 
@@ -61,7 +64,7 @@ export default function Footer() {
                         const section = document.querySelector(item.href);
                         section?.scrollIntoView({ behavior: "smooth" });
                       }}
-                      className="hover:underline transition-all duration-200 hover:translate-y-[-2px] hover:text-blue-400 hover:opacity-80"
+                      className="cursor-pointer transition-all duration-200 hover:translate-y-[-2px] hover:text-blue-400 hover:opacity-80"
                     >
                       {item.label}
                     </button>
@@ -72,7 +75,7 @@ export default function Footer() {
 
             {/* Connect */}
             <div className="space-y-2">
-              <h2 className="text-white font-semibold tracking-wider hover:text-blue-500 transition-all duration-200 hover:translate-y-[-2px] cursor-pointer text-lg md:text-base lg:text-xl">
+              <h2 className="text-blue-500 font-semibold tracking-wider transition-all duration-200  text-lg md:text-base lg:text-xl">
                 CONNECT
               </h2>
               <p className="text-gray-400 text-base md:text-sm lg:text-lg flex items-center gap-2">
@@ -82,8 +85,8 @@ export default function Footer() {
                     className="hover:text-blue-400 transition-all duration-200 hover:scale-105"
                   />
                 </Hint>
-                <a 
-                  href="mailto:techcommunityelixir@gmail.com" 
+                <a
+                  href="mailto:techcommunityelixir@gmail.com"
                   className="hover:text-blue-400 transition-all duration-200 hover:translate-y-[-2px] cursor-pointer"
                 >
                   techcommunityelixir@gmail.com

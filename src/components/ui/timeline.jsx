@@ -54,9 +54,9 @@ export const Timeline = ({ data }) => {
       ref={containerRef}
     >
       <div className="max-w-7xl mx-auto pt-20 px-4 md:px-8 lg:px-10">
-        <h2 className="text-3xl md:text-5xl lg:text-7xl mb-4 text-center text-white max-w-4xl font-extralight">
+        <h2 className="text-3xl md:text-5xl lg:text-7xl mb-4 text-center text-white max-w-4xl font-extralight mx-auto overflow-visible px-4">
           Mission{" "}
-          <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent italic font-bold">
+          <span className="bg-gradient-to-r from-[#0080FF] via-[#0D52BD] to-[#1C05B3] bg-clip-text text-transparent italic font-bold inline-block pr-2 md:pr-4">
             Timeline
           </span>
         </h2>
@@ -103,7 +103,7 @@ export const Timeline = ({ data }) => {
             className="flex justify-start pt-8 md:pt-40 md:gap-15 lg:gap-35"
           >
             <div className="sticky flex flex-col md:flex-row z-40 items-center top-20 md:top-40 self-start w-full md:max-w-xs lg:max-w-sm">
-              <div className="h-8 absolute left-4 md:left-3 w-8 rounded-full bg-black dark:bg-white flex items-center justify-center">
+              <div className="h-8 absolute left-0 md:left-4 w-8 rounded-full bg-black dark:bg-white flex items-center justify-center">
                 <div className="h-3 w-3 rounded-full bg-neutral-800 dark:bg-neutral-200 border border-neutral-700 dark:border-neutral-300" />
               </div>
               <h3 className="md:hidden text-lg font-bold text-white pl-12 pt-2">

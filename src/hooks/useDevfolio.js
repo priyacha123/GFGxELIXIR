@@ -7,19 +7,30 @@ export const useDevfolio = () => {
   useEffect(() => {
     // Initialize Devfolio buttons when component mounts
     const initializeDevfolio = () => {
-      if (window.devfolio && window.devfolio.initialize) {
+      if (
+        typeof window !== "undefined" &&
+        window.devfolio &&
+        window.devfolio.initialize
+      ) {
         window.devfolio.initialize();
       }
     };
 
     // Check if script is already loaded
-    if (document.querySelector('script[src*="apply.devfolio.co/v2/sdk.js"]')) {
+    if (
+      typeof window !== "undefined" &&
+      document.querySelector('script[src*="apply.devfolio.co/v2/sdk.js"]')
+    ) {
       // Script is loaded, initialize immediately
       setTimeout(initializeDevfolio, 100);
     } else {
       // Wait for script to load
       const checkScript = setInterval(() => {
-        if (window.devfolio && window.devfolio.initialize) {
+        if (
+          typeof window !== "undefined" &&
+          window.devfolio &&
+          window.devfolio.initialize
+        ) {
           initializeDevfolio();
           clearInterval(checkScript);
         }
