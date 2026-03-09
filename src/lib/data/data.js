@@ -174,7 +174,7 @@ export const SilverSponsorsData = [
   // { tier: "India Blockchain Week 2024", alt: "India Blockchain Week 2024", image: "/sponsors/ibw.svg", glow: "from-blue-500/20", link: "#" },
   { tier: "Cyrene AI", alt: "Cyrene AI Logo", image: "/sponsors/cyrene-2.png", glow: "from-purple-500/20", link: "https://cyreneai.com/" },
   { tier: "Featherless.ai", alt: "Featherless.ai Logo", image: "/sponsors/featherlessai.png", glow: "from-slate-500/10", link: "https://featherless.ai/" },
-  { tier: "CertifyOS", alt: "CertifyOS Logo", image: "/sponsors/FREE CREDITS (3).png", glow: "from-cyan-500/20", link: "https://www.certifyos.com/" },
+  { tier: "CertifyX", alt: "CertifyX Logo", image: "/sponsors/FREE CREDITS (3).png", glow: "from-cyan-500/20", link: "https://certifyix.com/" },
 ];
 export const BronzeSponsorsData = [
   // { tier: "India Blockchain Week 2024", alt: "India Blockchain Week 2024", image: "/sponsors/ibw.svg", glow: "from-blue-500/20", link: "#" },
