@@ -7,6 +7,7 @@ import { quickLinks } from "@/lib/data/data";
 import { Hint, HintProvider } from "@/components/ui/hint";
 import Image from "next/image";
 import VisitorBadge from "@/components/visitor-badge";
+import { VenueMap } from "./venue-map";
 
 export default function Footer() {
   return (
@@ -48,6 +49,8 @@ export default function Footer() {
               <p className="text-gray-400 text-base md:text-lg font-semibold">
                 Venue: ABES Engineering College, Ghaziabad
               </p>
+              <div className="mt-8" />
+              <VenueMap />
             </div>
 
             {/* Quicklinks */}
