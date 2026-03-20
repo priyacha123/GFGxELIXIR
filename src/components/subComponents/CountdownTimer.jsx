@@ -28,7 +28,10 @@ const Unit = ({ value, label }) => (
   </div>
 );
 
-const CountdownTimer = ({ targetDate }) => {
+const CountdownTimer = () => {
+  
+  const targetDate = new Date("2026-03-22T00:00:00+05:30").getTime();
+
   const [timeLeft, setTimeLeft] = useState({
     days: 0,
     hours: 0,
@@ -39,10 +42,16 @@ const CountdownTimer = ({ targetDate }) => {
   useEffect(() => {
     const timer = setInterval(() => {
       const now = Date.now();
-      const distance = new Date(targetDate).getTime() - now;
+      const distance = targetDate - now;
 
       if (distance <= 0) {
         clearInterval(timer);
+        setTimeLeft({
+          days: 0,
+          hours: 0,
+          minutes: 0,
+          seconds: 0,
+        });
         return;
       }
 
@@ -57,7 +66,7 @@ const CountdownTimer = ({ targetDate }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, [targetDate]);
+  }, []);
 
   return (
     <div className="w-full flex justify-center -mt-10 md:-mt-4">
