@@ -126,6 +126,12 @@
     font-family: var(--font-lora);
     @apply bg-background text-foreground antialiased;
   }
+  .maplibregl-popup-content {
+    @apply bg-transparent! shadow-none! p-0! rounded-none!;
+  }
+  .maplibregl-popup-tip {
+    @apply hidden!;
+  }
 }
 
 @keyframes astro-float {

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Github, Twitter, Instagram, Globe } from "lucide-react";
+import { Mail, Github, Twitter, Instagram, Globe, MapPin } from "lucide-react";
 import { IconBrandDiscord } from "@tabler/icons-react";
 import { quickLinks } from "@/lib/data/data";
 import { Hint, HintProvider } from "@/components/ui/hint";
@@ -13,8 +13,9 @@ export default function Footer() {
   return (
     <HintProvider>
       <footer className="w-full bg-black text-gray-300 pt-14 pb-8 border-t border-gray-800">
-        <div className="max-w-full mx-5  px-2">
-          <div className="flex md:flex-row flex-col justify-evenly gap-8 text-left text-base md:text-sm lg:text-lg">
+        <div className="max-w-full mx-5 px-2">
+          {/* 4 Column Layout */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-left text-base md:text-sm lg:text-lg mb-8">
             <div className="space-y-3">
               <Link
                 href="#hero"
@@ -37,7 +38,7 @@ export default function Footer() {
 
             {/* Event Info */}
             <div className="space-y-2">
-              <h2 className="text-blue-500 font-semibold tracking-wider transition-all duration-200   text-lg md:text-base lg:text-xl">
+              <h2 className="text-blue-500 font-semibold tracking-wider transition-all duration-200 text-lg md:text-base lg:text-xl">
                 EVENT INFO
               </h2>
               <p className="text-gray-400 text-base md:text-sm lg:text-lg">
@@ -49,13 +50,11 @@ export default function Footer() {
               <p className="text-gray-400 text-base md:text-lg font-semibold">
                 Venue: ABES Engineering College, Ghaziabad
               </p>
-              <div className="mt-8" />
-              <VenueMap />
             </div>
 
             {/* Quicklinks */}
             <div className="space-y-2">
-              <h2 className="text-blue-500 font-semibold tracking-wider  transition-all duration-200   text-lg md:text-base lg:text-xl">
+              <h2 className="text-blue-500 font-semibold tracking-wider transition-all duration-200 text-lg md:text-base lg:text-xl">
                 QUICKLINKS
               </h2>
 
@@ -78,7 +77,7 @@ export default function Footer() {
 
             {/* Connect */}
             <div className="space-y-2">
-              <h2 className="text-blue-500 font-semibold tracking-wider transition-all duration-200  text-lg md:text-base lg:text-xl">
+              <h2 className="text-blue-500 font-semibold tracking-wider transition-all duration-200 text-lg md:text-base lg:text-xl">
                 CONNECT
               </h2>
               <p className="text-gray-400 text-base md:text-sm lg:text-lg flex items-center gap-2">
@@ -101,7 +100,7 @@ export default function Footer() {
                     href="https://www.elixircommunity.in/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-all duration-200 hover:scale-105  p-1 rounded"
+                    className="hover:text-white transition-all duration-200 hover:scale-105 p-1 rounded"
                   >
                     <Globe size={20} />
                   </Link>
@@ -111,7 +110,7 @@ export default function Footer() {
                     href="https://github.com/ElixirTechCommunity"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-all duration-200 hover:scale-105  p-1 rounded"
+                    className="hover:text-white transition-all duration-200 hover:scale-105 p-1 rounded"
                   >
                     <Github size={20} />
                   </Link>
@@ -121,7 +120,7 @@ export default function Footer() {
                     href="https://www.instagram.com/geeksforgeeks_abesec"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-all duration-200 hover:scale-105  p-1 rounded"
+                    className="hover:text-white transition-all duration-200 hover:scale-105 p-1 rounded"
                   >
                     <Instagram size={20} />
                   </Link>
@@ -131,7 +130,7 @@ export default function Footer() {
                     href="https://discord.gg/vkkBGt7eHY"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-all duration-200 hover:scale-105  p-1 rounded"
+                    className="hover:text-white transition-all duration-200 hover:scale-105 p-1 rounded"
                   >
                     <IconBrandDiscord />
                   </Link>
@@ -141,7 +140,7 @@ export default function Footer() {
                     href="https://x.com/TheElixirTech"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="hover:text-white transition-all duration-200 hover:scale-105  p-1 rounded"
+                    className="hover:text-white transition-all duration-200 hover:scale-105 p-1 rounded"
                   >
                     <Twitter size={20} />
                   </Link>
@@ -150,16 +149,18 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Map Section - Horizontal below columns */}
+          <div className="w-full">
+            <VenueMap />
+          </div>
+
           {/* Bottom text */}
           <div className="border-t border-gray-800 mt-8 pt-4 text-center text-gray-500 text-sm md:text-xs lg:text-base space-y-1">
             <div className="flex justify-center items-center gap-4 mb-2">
               <VisitorBadge />
             </div>
             <p>© 2026 ELIXIR TECH COMMUNITY. ALL RIGHTS RESERVED.</p>
-            <p>
-              Built by GFG x ELIXIR
-              Team.
-            </p>
+            <p>Built by GFG x ELIXIR Team.</p>
           </div>
         </div>
       </footer>
